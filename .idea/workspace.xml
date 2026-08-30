@@ -64,6 +64,8 @@
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
         <option value="Kaneplarium &lt;kontakt@kaneplarium.com&gt;" />
+        <option value="kane" />
+        <option value="Marcel Maurice Marco Wittke &lt;kaneplarium@macbook.local&gt;" />
         <option value="Kaneplarium" />
       </list>
     </option>
@@ -97,6 +99,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Android App.app.executor": "Run",
     "ApkExportedModule": "Lagerverwaltung.app",
     "ExportApk.ApkPathForLagerverwaltung.app": "/Users/kaneplarium/AndroidStudioProjects/Lagerverwaltung/app",
@@ -107,17 +110,18 @@
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "com.google.cloudcode.ide_session_index": "20260830_0003",
+    "com.google.cloudcode.ide_session_index": "20260831_0001",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.17",
     "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "settings.editor.selected.configurable": "vcs.Git",
     "show.migrate.to.gradle.popup": "false"
   },
   "keyToStringList": {
@@ -242,12 +246,99 @@
       <option name="project" value="LOCAL" />
       <updated>1788127840107</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Änderungen:&#10;1.&#10;Neues Datenmodell: Die Artikel verfügen nun über die Felder umschlagFarbe und umschlagGroesse.&#10;2.&#10;Bearbeitungsmaske: Im Bearbeitungsbildschirm wurden zwei neue Eingabefelder hinzugefügt. Die Eingabe erfolgt (konsistent zum Rest der App) über das numerische Tastenfeld.&#10;3.&#10;Dashboard: In der Liste werden die Umschlagdaten (Farbe und Größe) nun unter der Platznummer angezeigt.&#10;4.&#10;Export/Import: Die CSV-Funktion wurde erweitert, sodass die neuen Felder mit exportiert und importiert werden.&#10;5.&#10;Version: Die Versionsnummer wurde auf v2026.08.30 aktualisiert.&#10;6.&#10;Datenbank: Die Datenbankversion wurde erhöht. Da es sich um eine strukturelle Änderung handelt, habe ich die automatische Löschung bei Migration aktiviert (Destructive Migration), um Probleme beim ersten Start nach dem Update zu vermeiden.">
+      <option name="closed" value="true" />
+      <created>1788128977862</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1788128977862</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Änderungen:&#10;1.&#10;Neues Datenmodell: Die Artikel verfügen nun über die Felder umschlagFarbe und umschlagGroesse.&#10;2.&#10;Bearbeitungsmaske: Im Bearbeitungsbildschirm wurden zwei neue Eingabefelder hinzugefügt. Die Eingabe erfolgt (konsistent zum Rest der App) über das numerische Tastenfeld.&#10;3.&#10;Dashboard: In der Liste werden die Umschlagdaten (Farbe und Größe) nun unter der Platznummer angezeigt.&#10;4.&#10;Export/Import: Die CSV-Funktion wurde erweitert, sodass die neuen Felder mit exportiert und importiert werden.&#10;5.&#10;Version: Die Versionsnummer wurde auf v2026.08.30 aktualisiert.&#10;6.&#10;Datenbank: Die Datenbankversion wurde erhöht. Da es sich um eine strukturelle Änderung handelt, habe ich die automatische Löschung bei Migration aktiviert (Destructive Migration), um Probleme beim ersten Start nach dem Update zu vermeiden.&#10;&#10;Signed-off-by: Marcel Maurice Marco Wittke &lt;kaneplarium@macbook.local&gt;">
+      <option name="closed" value="true" />
+      <created>1788129063281</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1788129063281</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Änderungen:&#10;1.&#10;Neues Datenmodell: Die Artikel verfügen nun über die Felder umschlagFarbe und umschlagGroesse.&#10;2.&#10;Bearbeitungsmaske: Im Bearbeitungsbildschirm wurden zwei neue Eingabefelder hinzugefügt. Die Eingabe erfolgt (konsistent zum Rest der App) über das numerische Tastenfeld.&#10;3.&#10;Dashboard: In der Liste werden die Umschlagdaten (Farbe und Größe) nun unter der Platznummer angezeigt.&#10;4.&#10;Export/Import: Die CSV-Funktion wurde erweitert, sodass die neuen Felder mit exportiert und importiert werden.&#10;5.&#10;Version: Die Versionsnummer wurde auf v2026.08.30 aktualisiert.&#10;6.&#10;Datenbank: Die Datenbankversion wurde erhöht. Da es sich um eine strukturelle Änderung handelt, habe ich die automatische Löschung bei Migration aktiviert (Destructive Migration), um Probleme beim ersten Start nach dem Update zu vermeiden.&#10;&#10;Signed-off-by: Marcel Maurice Marco Wittke &lt;kaneplarium@macbook.local&gt;">
+      <option name="closed" value="true" />
+      <created>1788129069879</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1788129069879</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Änderungen:&#10;1.&#10;Neues Datenmodell: Die Artikel verfügen nun über die Felder umschlagFarbe und umschlagGroesse.&#10;2.&#10;Bearbeitungsmaske: Im Bearbeitungsbildschirm wurden zwei neue Eingabefelder hinzugefügt. Die Eingabe erfolgt (konsistent zum Rest der App) über das numerische Tastenfeld.&#10;3.&#10;Dashboard: In der Liste werden die Umschlagdaten (Farbe und Größe) nun unter der Platznummer angezeigt.&#10;4.&#10;Export/Import: Die CSV-Funktion wurde erweitert, sodass die neuen Felder mit exportiert und importiert werden.&#10;5.&#10;Version: Die Versionsnummer wurde auf v2026.08.30 aktualisiert.&#10;6.&#10;Datenbank: Die Datenbankversion wurde erhöht. Da es sich um eine strukturelle Änderung handelt, habe ich die automatische Löschung bei Migration aktiviert (Destructive Migration), um Probleme beim ersten Start nach dem Update zu vermeiden.&#10;&#10;Signed-off-by: Marcel Maurice Marco Wittke &lt;kaneplarium@macbook.local&gt;">
+      <option name="closed" value="true" />
+      <created>1788129100785</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1788129100785</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Änderungen:&#10;1.&#10;Neues Datenmodell: Die Artikel verfügen nun über die Felder umschlagFarbe und umschlagGroesse.&#10;2.&#10;Bearbeitungsmaske: Im Bearbeitungsbildschirm wurden zwei neue Eingabefelder hinzugefügt. Die Eingabe erfolgt (konsistent zum Rest der App) über das numerische Tastenfeld.&#10;3.&#10;Dashboard: In der Liste werden die Umschlagdaten (Farbe und Größe) nun unter der Platznummer angezeigt.&#10;4.&#10;Export/Import: Die CSV-Funktion wurde erweitert, sodass die neuen Felder mit exportiert und importiert werden.&#10;5.&#10;Version: Die Versionsnummer wurde auf v2026.08.30 aktualisiert.&#10;6.&#10;Datenbank: Die Datenbankversion wurde erhöht. Da es sich um eine strukturelle Änderung handelt, habe ich die automatische Löschung bei Migration aktiviert (Destructive Migration), um Probleme beim ersten Start nach dem Update zu vermeiden.&#10;&#10;Signed-off-by: Marcel Maurice Marco Wittke &lt;kaneplarium@macbook.local&gt;">
+      <option name="closed" value="true" />
+      <created>1788129122498</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1788129122498</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Änderungen:&#10;1.&#10;Neues Datenmodell: Die Artikel verfügen nun über die Felder umschlagFarbe und umschlagGroesse.&#10;2.&#10;Bearbeitungsmaske: Im Bearbeitungsbildschirm wurden zwei neue Eingabefelder hinzugefügt. Die Eingabe erfolgt (konsistent zum Rest der App) über das numerische Tastenfeld.&#10;3.&#10;Dashboard: In der Liste werden die Umschlagdaten (Farbe und Größe) nun unter der Platznummer angezeigt.&#10;4.&#10;Export/Import: Die CSV-Funktion wurde erweitert, sodass die neuen Felder mit exportiert und importiert werden.&#10;5.&#10;Version: Die Versionsnummer wurde auf v2026.08.30 aktualisiert.&#10;6.&#10;Datenbank: Die Datenbankversion wurde erhöht. Da es sich um eine strukturelle Änderung handelt, habe ich die automatische Löschung bei Migration aktiviert (Destructive Migration), um Probleme beim ersten Start nach dem Update zu vermeiden.&#10;&#10;Signed-off-by: Marcel Maurice Marco Wittke &lt;kaneplarium@macbook.local&gt;">
+      <option name="closed" value="true" />
+      <created>1788130520729</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1788130520729</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Änderungen:&#10;1.&#10;Neues Datenmodell: Die Artikel verfügen nun über die Felder umschlagFarbe und umschlagGroesse.&#10;2.&#10;Bearbeitungsmaske: Im Bearbeitungsbildschirm wurden zwei neue Eingabefelder hinzugefügt. Die Eingabe erfolgt (konsistent zum Rest der App) über das numerische Tastenfeld.&#10;3.&#10;Dashboard: In der Liste werden die Umschlagdaten (Farbe und Größe) nun unter der Platznummer angezeigt.&#10;4.&#10;Export/Import: Die CSV-Funktion wurde erweitert, sodass die neuen Felder mit exportiert und importiert werden.&#10;5.&#10;Version: Die Versionsnummer wurde auf v2026.08.30 aktualisiert.&#10;6.&#10;Datenbank: Die Datenbankversion wurde erhöht. Da es sich um eine strukturelle Änderung handelt, habe ich die automatische Löschung bei Migration aktiviert (Destructive Migration), um Probleme beim ersten Start nach dem Update zu vermeiden.&#10;&#10;Signed-off-by: Marcel Maurice Marco Wittke &lt;kaneplarium@macbook.local&gt;">
+      <option name="closed" value="true" />
+      <created>1788130577327</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1788130577327</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Änderungen:&#10;1.&#10;Neues Datenmodell: Die Artikel verfügen nun über die Felder umschlagFarbe und umschlagGroesse.&#10;2.&#10;Bearbeitungsmaske: Im Bearbeitungsbildschirm wurden zwei neue Eingabefelder hinzugefügt. Die Eingabe erfolgt (konsistent zum Rest der App) über das numerische Tastenfeld.&#10;3.&#10;Dashboard: In der Liste werden die Umschlagdaten (Farbe und Größe) nun unter der Platznummer angezeigt.&#10;4.&#10;Export/Import: Die CSV-Funktion wurde erweitert, sodass die neuen Felder mit exportiert und importiert werden.&#10;5.&#10;Version: Die Versionsnummer wurde auf v2026.08.30 aktualisiert.&#10;6.&#10;Datenbank: Die Datenbankversion wurde erhöht. Da es sich um eine strukturelle Änderung handelt, habe ich die automatische Löschung bei Migration aktiviert (Destructive Migration), um Probleme beim ersten Start nach dem Update zu vermeiden.&#10;&#10;Signed-off-by: Marcel Maurice Marco Wittke &lt;kaneplarium@macbook.local&gt;">
+      <option name="closed" value="true" />
+      <created>1788130586839</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1788130586839</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
+  <component name="UpdateCopyrightCheckinHandler">
+    <option name="UPDATE_COPYRIGHT" value="true" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
+    <option name="CODE_SMELLS_PROFILE" value="Project Default" />
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT_PROFILE" value="Project Default" />
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="MARK_IGNORED_AS_EXCLUDED" value="true" />
+    <MESSAGE value="Änderungen:&#10;1.&#10;Neues Datenmodell: Die Artikel verfügen nun über die Felder umschlagFarbe und umschlagGroesse.&#10;2.&#10;Bearbeitungsmaske: Im Bearbeitungsbildschirm wurden zwei neue Eingabefelder hinzugefügt. Die Eingabe erfolgt (konsistent zum Rest der App) über das numerische Tastenfeld.&#10;3.&#10;Dashboard: In der Liste werden die Umschlagdaten (Farbe und Größe) nun unter der Platznummer angezeigt.&#10;4.&#10;Export/Import: Die CSV-Funktion wurde erweitert, sodass die neuen Felder mit exportiert und importiert werden.&#10;5.&#10;Version: Die Versionsnummer wurde auf v2026.08.30 aktualisiert.&#10;6.&#10;Datenbank: Die Datenbankversion wurde erhöht. Da es sich um eine strukturelle Änderung handelt, habe ich die automatische Löschung bei Migration aktiviert (Destructive Migration), um Probleme beim ersten Start nach dem Update zu vermeiden." />
     <MESSAGE value="2026-08-30" />
-    <option name="LAST_COMMIT_MESSAGE" value="2026-08-30" />
+    <MESSAGE value="Änderungen:&#10;1.&#10;Neues Datenmodell: Die Artikel verfügen nun über die Felder umschlagFarbe und umschlagGroesse.&#10;2.&#10;Bearbeitungsmaske: Im Bearbeitungsbildschirm wurden zwei neue Eingabefelder hinzugefügt. Die Eingabe erfolgt (konsistent zum Rest der App) über das numerische Tastenfeld.&#10;3.&#10;Dashboard: In der Liste werden die Umschlagdaten (Farbe und Größe) nun unter der Platznummer angezeigt.&#10;4.&#10;Export/Import: Die CSV-Funktion wurde erweitert, sodass die neuen Felder mit exportiert und importiert werden.&#10;5.&#10;Version: Die Versionsnummer wurde auf v2026.08.30 aktualisiert.&#10;6.&#10;Datenbank: Die Datenbankversion wurde erhöht. Da es sich um eine strukturelle Änderung handelt, habe ich die automatische Löschung bei Migration aktiviert (Destructive Migration), um Probleme beim ersten Start nach dem Update zu vermeiden.&#10;&#10;Signed-off-by: Marcel Maurice Marco Wittke &lt;kaneplarium@macbook.local&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Änderungen:&#10;1.&#10;Neues Datenmodell: Die Artikel verfügen nun über die Felder umschlagFarbe und umschlagGroesse.&#10;2.&#10;Bearbeitungsmaske: Im Bearbeitungsbildschirm wurden zwei neue Eingabefelder hinzugefügt. Die Eingabe erfolgt (konsistent zum Rest der App) über das numerische Tastenfeld.&#10;3.&#10;Dashboard: In der Liste werden die Umschlagdaten (Farbe und Größe) nun unter der Platznummer angezeigt.&#10;4.&#10;Export/Import: Die CSV-Funktion wurde erweitert, sodass die neuen Felder mit exportiert und importiert werden.&#10;5.&#10;Version: Die Versionsnummer wurde auf v2026.08.30 aktualisiert.&#10;6.&#10;Datenbank: Die Datenbankversion wurde erhöht. Da es sich um eine strukturelle Änderung handelt, habe ich die automatische Löschung bei Migration aktiviert (Destructive Migration), um Probleme beim ersten Start nach dem Update zu vermeiden.&#10;&#10;Signed-off-by: Marcel Maurice Marco Wittke &lt;kaneplarium@macbook.local&gt;" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
