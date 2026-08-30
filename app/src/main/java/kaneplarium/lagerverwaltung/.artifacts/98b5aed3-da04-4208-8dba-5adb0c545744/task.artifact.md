@@ -1,0 +1,6 @@
+- [x] Refactor `NutzerkennungEntryDialog` to `NutzerkennungEntryDialogContent`
+- [x] Refactor `DashboardScreen` to `DashboardScreenContent`
+- [x] Update `DashboardScreen` to use `DashboardScreenContent`
+- [x] Update `DashboardScreenContent` to use `NutzerkennungEntryDialogContent`
+- [x] Replace `DashboardScreenPreview` with `DashboardScreenContentPreview`
+- [x] Verify changes with `render_compose_preview`

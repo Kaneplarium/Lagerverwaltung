@@ -1,0 +1,145 @@
+package kaneplarium.lagerverwaltung.ui.articleedit
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kaneplarium.lagerverwaltung.data.Article
+import kaneplarium.lagerverwaltung.data.ArticleDao
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+
+class ArticleEditViewModel(
+    private val articleDao: ArticleDao,
+    private val articleId: String?
+) : ViewModel() {
+
+    private val _uiState = MutableStateFlow(ArticleEditUiState())
+    val uiState: StateFlow<ArticleEditUiState> = _uiState.asStateFlow()
+
+    init {
+        if (articleId != null) {
+            viewModelScope.launch {
+                try {
+                    val article = withContext(Dispatchers.IO) {
+                        articleDao.getArticleById(articleId)
+                    }
+                    if (article != null) {
+                        ArticleEditUiState(
+                            id = article.id ?: "",
+                            shelfNumber = article.shelfNumber ?: "",
+                            compartmentNumber = article.compartmentNumber ?: "",
+                            umschlagFarbe = article.umschlagFarbe,
+                            umschlagGroesse = article.umschlagGroesse,
+                            isLocked = article.isLocked,
+                            isEditing = true
+                        ).also { _uiState.value = it }
+                    } else {
+                        // Pre-fill ID for new article if it was scanned
+                        _uiState.value = ArticleEditUiState(id = articleId)
+                    }
+                } catch (e: Exception) {
+                    _uiState.value =
+                        _uiState.value.copy(idError = "Error loading article: ${e.message}")
+                }
+            }
+        }
+    }
+
+    fun onIdChange(newId: String) {
+        _uiState.value = _uiState.value.copy(id = newId, idError = null)
+    }
+
+    fun onShelfNumberChange(newShelf: String) {
+        _uiState.value = _uiState.value.copy(shelfNumber = newShelf)
+    }
+
+    fun onCompartmentNumberChange(newCompartment: String) {
+        _uiState.value = _uiState.value.copy(compartmentNumber = newCompartment)
+    }
+
+    fun onUmschlagFarbeChange(newFarbe: String) {
+        _uiState.value = _uiState.value.copy(umschlagFarbe = newFarbe)
+    }
+
+    fun onUmschlagGroesseChange(newGroesse: String) {
+        _uiState.value = _uiState.value.copy(umschlagGroesse = newGroesse)
+    }
+
+    fun saveArticle(onSuccess: () -> Unit) {
+        val currentState = _uiState.value
+        if (!validateId(currentState.id)) {
+            _uiState.value = currentState.copy(idError = "Kisten-ID muss aus 6-7 Ziffern bestehen")
+            return
+        }
+
+        if (currentState.shelfNumber.isBlank() || !currentState.shelfNumber.all { it.isDigit() }) {
+            _uiState.value = currentState.copy(idError = "Regal muss eine Nummer sein")
+            return
+        }
+
+        if (currentState.compartmentNumber.isBlank() || !currentState.compartmentNumber.all { it.isDigit() }) {
+            _uiState.value = currentState.copy(idError = "Platznummer muss eine Nummer sein")
+            return
+        }
+
+        if (currentState.isSaving) return
+
+        _uiState.value = currentState.copy(isSaving = true)
+
+        viewModelScope.launch {
+            try {
+                // Safety check: if adding a new article, ensure ID doesn't already exist
+                if (!currentState.isEditing) {
+                    val existing = withContext(Dispatchers.IO) {
+                        articleDao.getArticleById(currentState.id)
+                    }
+                    if (existing != null) {
+                        _uiState.value = currentState.copy(
+                            idError = "Article with this ID already exists",
+                            isSaving = false
+                        )
+                        return@launch
+                    }
+                }
+
+                withContext(Dispatchers.IO) {
+                    articleDao.insertArticle(
+                        Article(
+                            id = currentState.id,
+                            shelfNumber = currentState.shelfNumber,
+                            compartmentNumber = currentState.compartmentNumber,
+                            umschlagFarbe = currentState.umschlagFarbe,
+                            umschlagGroesse = currentState.umschlagGroesse,
+                            isLocked = currentState.isLocked
+                        )
+                    )
+                }
+                onSuccess()
+            } catch (e: Exception) {
+                _uiState.value = currentState.copy(
+                    idError = "Error saving article: ${e.message}",
+                    isSaving = false
+                )
+            }
+        }
+    }
+
+    private fun validateId(id: String): Boolean {
+        return id.length in 6..7 && id.all { it.isDigit() }
+    }
+}
+
+data class ArticleEditUiState(
+    val id: String = "",
+    val shelfNumber: String = "",
+    val compartmentNumber: String = "",
+    val umschlagFarbe: String = "",
+    val umschlagGroesse: String = "",
+    val idError: String? = null,
+    val isEditing: Boolean = false,
+    val isSaving: Boolean = false,
+    val isLocked: Boolean = false
+)
