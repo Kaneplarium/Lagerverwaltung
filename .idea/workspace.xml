@@ -75,6 +75,13 @@
     <option name="REMEMBER_PASSWORDS" value="true" />
     <option name="BUILD_TARGET_KEY" value="apk" />
   </component>
+  <component name="Git.Pull.Settings">
+    <option name="OPTIONS">
+      <set>
+        <option value="REBASE" />
+      </set>
+    </option>
+  </component>
   <component name="Git.Rebase.Settings">
     <option name="NEW_BASE" value="master" />
   </component>
@@ -455,7 +462,23 @@
       <option name="project" value="LOCAL" />
       <updated>1789834048390</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Änderungen:&#10;1.&#10;Projektplanung: Neue Dokumentations-Artefakte für die Implementierung, Aufgabenstellung und einen Walkthrough wurden im Verzeichnis `.artifacts` hinzugefügt.&#10;2.&#10;Entwicklungsumgebung: Grundlegende Konfigurationsdateien für die IDE (IntelliJ IDEA/Android Studio) sowie die Modulbeschreibung (`.iml`) für die Lagerverwaltung-App wurden erstellt.">
+      <option name="closed" value="true" />
+      <created>1789834381102</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1789834381102</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Änderungen:&#10;1.&#10;Projektplanung: Neue Dokumentations-Artefakte für die Implementierung, Aufgabenstellung und einen Walkthrough wurden im Verzeichnis `.artifacts` hinzugefügt.&#10;2.&#10;Entwicklungsumgebung: Grundlegende Konfigurationsdateien für die IDE (IntelliJ IDEA/Android Studio) sowie die Modulbeschreibung (`.iml`) für die Lagerverwaltung-App wurden erstellt.">
+      <option name="closed" value="true" />
+      <created>1789834626003</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1789834626003</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="UpdateCopyrightCheckinHandler">
