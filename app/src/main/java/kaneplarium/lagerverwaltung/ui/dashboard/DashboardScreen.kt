@@ -505,7 +505,7 @@ fun ArticleItem(
                 }
             }
         },
-        enableDismissFromEndToStart = true, // No action but indicator might show
+        enableDismissFromEndToStart = false,
         modifier = modifier
     ) {
         Card(
