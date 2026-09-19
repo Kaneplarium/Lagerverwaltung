@@ -439,7 +439,23 @@
       <option name="project" value="LOCAL" />
       <updated>1789833947512</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Änderungen:&#10;1.&#10;Projektplanung: Neue Dokumentations-Artefakte für die Implementierung, Aufgabenstellung und einen Walkthrough wurden im Verzeichnis `.artifacts` hinzugefügt.&#10;2.&#10;Entwicklungsumgebung: Grundlegende Konfigurationsdateien für die IDE (IntelliJ IDEA/Android Studio) sowie die Modulbeschreibung (`.iml`) für die Lagerverwaltung-App wurden erstellt.">
+      <option name="closed" value="true" />
+      <created>1789834024766</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1789834024766</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Änderungen:&#10;1.&#10;Projektplanung: Neue Dokumentations-Artefakte für die Implementierung, Aufgabenstellung und einen Walkthrough wurden im Verzeichnis `.artifacts` hinzugefügt.&#10;2.&#10;Entwicklungsumgebung: Grundlegende Konfigurationsdateien für die IDE (IntelliJ IDEA/Android Studio) sowie die Modulbeschreibung (`.iml`) für die Lagerverwaltung-App wurden erstellt.">
+      <option name="closed" value="true" />
+      <created>1789834048390</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1789834048390</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="UpdateCopyrightCheckinHandler">
