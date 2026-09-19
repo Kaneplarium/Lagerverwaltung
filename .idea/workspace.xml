@@ -114,6 +114,9 @@
     &quot;accountId&quot;: &quot;a304e362-e1e1-4786-ab97-d3f3d35b3023&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5,
   &quot;fromUser&quot;: false
@@ -403,7 +406,23 @@
       <option name="project" value="LOCAL" />
       <updated>1788384290558</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Änderungen:&#10;1.&#10;Projektplanung: Neue Dokumentations-Artefakte für die Implementierung, Aufgabenstellung und einen Walkthrough wurden im Verzeichnis `.artifacts` hinzugefügt.&#10;2.&#10;Entwicklungsumgebung: Grundlegende Konfigurationsdateien für die IDE (IntelliJ IDEA/Android Studio) sowie die Modulbeschreibung (`.iml`) für die Lagerverwaltung-App wurden erstellt.">
+      <option name="closed" value="true" />
+      <created>1789828239115</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1789828239115</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Änderungen:&#10;1.&#10;Projektplanung: Neue Dokumentations-Artefakte für die Implementierung, Aufgabenstellung und einen Walkthrough wurden im Verzeichnis `.artifacts` hinzugefügt.&#10;2.&#10;Entwicklungsumgebung: Grundlegende Konfigurationsdateien für die IDE (IntelliJ IDEA/Android Studio) sowie die Modulbeschreibung (`.iml`) für die Lagerverwaltung-App wurden erstellt.">
+      <option name="closed" value="true" />
+      <created>1789828245350</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1789828245350</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="UpdateCopyrightCheckinHandler">
@@ -430,7 +449,9 @@
     <MESSAGE value="2026-08-30&#10;&#10;Signed-off-by: Marcel Maurice Marco Wittke &lt;kaneplarium@macbook.local&gt;" />
     <MESSAGE value="2026-09-02" />
     <MESSAGE value="2026-08-30" />
-    <option name="LAST_COMMIT_MESSAGE" value="2026-08-30" />
+    <MESSAGE value="1.&#10;3-Tap-Bearbeitung: Das Navigieren zur Bearbeitungsmaske ist nun nur noch möglich, indem man dreimal hintereinander auf die kID (Kisten-ID) tippt. Normale Klicks auf den Rest der Karte wurden deaktiviert.&#10;2.&#10;Verlauf entfernt: Die Verlaufs-Leiste (&quot;History&quot;) wurde komplett entfernt.&#10;3.&#10;Timer ausgeblendet: Der Sekundentimer im Suchfeld wird nicht mehr angezeigt. Die Farbumschläge (Grün -&gt; Gelb -&gt; Rot) bleiben als dezenter Hinweis auf die Zeit bis zur automatischen Löschung erhalten.&#10;4.&#10;Optionen-Farben: Der Button &quot;Sperren&quot; / &quot;Entsperren&quot; im Optionen-Menü hat nun die gleiche Standardfarbe wie der &quot;Bearbeiten&quot;-Button. &quot;Löschen&quot; bleibt wie gewünscht in Rot.&#10;5.&#10;Swipe-Aktion: Das Wischen zum Bearbeiten wurde deaktiviert, um die Sicherheit der 3-Tap-Geste nicht zu umgehen." />
+    <MESSAGE value="Änderungen:&#10;1.&#10;Projektplanung: Neue Dokumentations-Artefakte für die Implementierung, Aufgabenstellung und einen Walkthrough wurden im Verzeichnis `.artifacts` hinzugefügt.&#10;2.&#10;Entwicklungsumgebung: Grundlegende Konfigurationsdateien für die IDE (IntelliJ IDEA/Android Studio) sowie die Modulbeschreibung (`.iml`) für die Lagerverwaltung-App wurden erstellt." />
+    <option name="LAST_COMMIT_MESSAGE" value="Änderungen:&#10;1.&#10;Projektplanung: Neue Dokumentations-Artefakte für die Implementierung, Aufgabenstellung und einen Walkthrough wurden im Verzeichnis `.artifacts` hinzugefügt.&#10;2.&#10;Entwicklungsumgebung: Grundlegende Konfigurationsdateien für die IDE (IntelliJ IDEA/Android Studio) sowie die Modulbeschreibung (`.iml`) für die Lagerverwaltung-App wurden erstellt." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
