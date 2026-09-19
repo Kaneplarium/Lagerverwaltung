@@ -1,0 +1,8 @@
+- [x] Add Haptic Feedback to `NumericKeypad`
+- [x] Add Recent Searches logic to `DashboardViewModel`
+- [x] Implement Swipe-to-Action in `ArticleItem`
+- [x] Add visual status indicator to `ArticleItem`
+- [x] Add Recent Searches UI to `DashboardScreen`
+- [x] Add list animations in `DashboardScreen`
+- [x] Update version to `v2026.09.19.UX`
+- [x] Verify build and functionality

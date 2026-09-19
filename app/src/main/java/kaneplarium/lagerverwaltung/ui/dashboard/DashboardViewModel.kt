@@ -65,9 +65,9 @@ class DashboardViewModel(
                     val writer = OutputStreamWriter(stream, "UTF-8")
                     // Header: Excel works best with CSV if semicolon is used and encoding is BOM UTF-8 or just UTF-8
                     // We use semicolon as it is common in German Excel
-                    writer.write("Kisten-ID;Regal;Platznummer;Umschlagfarbe;Umschlaggröße;Gesperrt\n")
+                    writer.write("Kisten-ID;Regal;Platznummer;Gesperrt\n")
                     allArticles.forEach { article ->
-                        writer.write("${article.id};${article.shelfNumber};${article.compartmentNumber};${article.umschlagFarbe};${article.umschlagGroesse};${article.isLocked}\n")
+                        writer.write("${article.id};${article.shelfNumber};${article.compartmentNumber};${article.isLocked}\n")
                     }
                     writer.flush()
                 }
@@ -88,11 +88,9 @@ class DashboardViewModel(
                             val id = parts[0]
                             val shelf = parts[1]
                             val compartment = parts[2]
-                            val ufarbe = parts.getOrNull(3) ?: ""
-                            val ugroesse = parts.getOrNull(4) ?: ""
-                            val isLocked = parts.getOrNull(5)?.toBoolean() ?: false
+                            val isLocked = parts.getOrNull(3)?.toBoolean() ?: false
                             articleDao.insertArticle(
-                                Article(id, shelf, compartment, ufarbe, ugroesse, isLocked)
+                                Article(id, shelf, compartment, isLocked)
                             )
                         }
                     }

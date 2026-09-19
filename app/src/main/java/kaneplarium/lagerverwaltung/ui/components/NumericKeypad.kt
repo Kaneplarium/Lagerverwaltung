@@ -16,6 +16,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -26,6 +28,23 @@ fun NumericKeypad(
     modifier: Modifier = Modifier,
     onEnterClick: (() -> Unit)? = null
 ) {
+    val haptic = LocalHapticFeedback.current
+    
+    val handleNumberClick = { number: String ->
+        haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+        onNumberClick(number)
+    }
+
+    val handleDeleteClick = {
+        haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+        onDeleteClick()
+    }
+
+    val handleEnterClick = {
+        haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+        onEnterClick?.invoke()
+    }
+
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -49,7 +68,7 @@ fun NumericKeypad(
                 row.forEach { number ->
                     KeypadButton(
                         text = number,
-                        onClick = { onNumberClick(number) },
+                        onClick = { handleNumberClick(number) },
                         modifier = buttonModifier
                     )
                 }
@@ -62,7 +81,7 @@ fun NumericKeypad(
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Button(
-                onClick = onDeleteClick,
+                onClick = handleDeleteClick,
                 modifier = buttonModifier,
                 colors = ButtonDefaults.buttonColors(
                     containerColor = MaterialTheme.colorScheme.errorContainer,
@@ -77,13 +96,13 @@ fun NumericKeypad(
 
             KeypadButton(
                 text = "0",
-                onClick = { onNumberClick("0") },
+                onClick = { handleNumberClick("0") },
                 modifier = buttonModifier
             )
 
             if (onEnterClick != null) {
                 Button(
-                    onClick = onEnterClick,
+                    onClick = { handleEnterClick() },
                     modifier = buttonModifier,
                     colors = ButtonDefaults.buttonColors(
                         containerColor = MaterialTheme.colorScheme.primaryContainer,

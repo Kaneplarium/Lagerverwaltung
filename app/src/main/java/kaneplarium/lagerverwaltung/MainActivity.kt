@@ -77,6 +77,7 @@ fun LagerverwaltungApp(articleDao: ArticleDao) {
                 is AppNavKey.ArticleEdit -> {
                     NavEntry(key) {
                         val viewModel: ArticleEditViewModel = viewModel(
+                            key = "ArticleEdit_${key.articleId}",
                             factory = ArticleEditViewModelFactory(articleDao, key.articleId)
                         )
                         ArticleEditScreen(

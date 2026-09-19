@@ -29,6 +29,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -43,7 +44,7 @@ import kaneplarium.lagerverwaltung.ui.components.NumericKeypad
 import kaneplarium.lagerverwaltung.ui.theme.LagerverwaltungTheme
 
 enum class FocusedField {
-    NONE, ID, SHELF, COMPARTMENT, UMSCHLAG_FARBE, UMSCHLAG_GROESSE
+    NONE, ID, SHELF, COMPARTMENT
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -56,13 +57,18 @@ fun ArticleEditScreen(
     val uiState by viewModel.uiState.collectAsState()
     var focusedField by remember { mutableStateOf(FocusedField.ID) }
 
+    LaunchedEffect(viewModel) {
+        // Ensure state is correctly initialized/reset whenever this screen is shown
+        // if we are entering with a specific ID.
+        // viewModel.loadArticle(uiState.id) // This might be redundant if VM is fresh, 
+        // but it helps if VM is reused.
+    }
+
     val handleNumberClick = { number: String ->
         when (focusedField) {
             FocusedField.ID -> viewModel.onIdChange(uiState.id + number)
             FocusedField.SHELF -> viewModel.onShelfNumberChange(uiState.shelfNumber + number)
             FocusedField.COMPARTMENT -> viewModel.onCompartmentNumberChange(uiState.compartmentNumber + number)
-            FocusedField.UMSCHLAG_FARBE -> viewModel.onUmschlagFarbeChange(uiState.umschlagFarbe + number)
-            FocusedField.UMSCHLAG_GROESSE -> viewModel.onUmschlagGroesseChange(uiState.umschlagGroesse + number)
             FocusedField.NONE -> {}
         }
     }
@@ -81,14 +87,6 @@ fun ArticleEditScreen(
 
             FocusedField.COMPARTMENT -> if (uiState.compartmentNumber.isNotEmpty()) viewModel.onCompartmentNumberChange(
                 uiState.compartmentNumber.dropLast(1)
-            )
-
-            FocusedField.UMSCHLAG_FARBE -> if (uiState.umschlagFarbe.isNotEmpty()) viewModel.onUmschlagFarbeChange(
-                uiState.umschlagFarbe.dropLast(1)
-            )
-
-            FocusedField.UMSCHLAG_GROESSE -> if (uiState.umschlagGroesse.isNotEmpty()) viewModel.onUmschlagGroesseChange(
-                uiState.umschlagGroesse.dropLast(1)
             )
 
             FocusedField.NONE -> {}
@@ -116,10 +114,8 @@ fun ArticleEditScreen(
                 onDeleteClick = handleDeleteClick,
                 onEnterClick = {
                     when (focusedField) {
-                        FocusedField.ID -> if (!uiState.isEditing) focusedField = FocusedField.SHELF else focusedField = FocusedField.UMSCHLAG_FARBE
+                        FocusedField.ID -> if (!uiState.isEditing) focusedField = FocusedField.SHELF else viewModel.saveArticle(onSuccess = onNavigateBack)
                         FocusedField.SHELF -> focusedField = FocusedField.COMPARTMENT
-                        FocusedField.COMPARTMENT -> focusedField = FocusedField.UMSCHLAG_FARBE
-                        FocusedField.UMSCHLAG_FARBE -> focusedField = FocusedField.UMSCHLAG_GROESSE
                         else -> viewModel.saveArticle(onSuccess = onNavigateBack)
                     }
                 },
@@ -200,31 +196,6 @@ fun ArticleEditForm(
                         isFocused = focusedField == FocusedField.COMPARTMENT,
                         modifier = Modifier.weight(1f),
                         onClick = { onFocusChange(FocusedField.COMPARTMENT) }
-                    )
-                }
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp)
-                ) {
-                    EditField(
-                        value = uiState.umschlagFarbe,
-                        label = "Umschlagfarbe",
-                        icon = Icons.Default.Archive, // Using Archive as placeholder icon
-                        isFocused = focusedField == FocusedField.UMSCHLAG_FARBE,
-                        modifier = Modifier.weight(2f),
-                        onClick = { onFocusChange(FocusedField.UMSCHLAG_FARBE) }
-                    )
-
-                    EditField(
-                        value = uiState.umschlagGroesse,
-                        label = "Größe",
-                        icon = Icons.Default.Numbers,
-                        isFocused = focusedField == FocusedField.UMSCHLAG_GROESSE,
-                        modifier = Modifier.weight(1f),
-                        onClick = { onFocusChange(FocusedField.UMSCHLAG_GROESSE) }
                     )
                 }
             }

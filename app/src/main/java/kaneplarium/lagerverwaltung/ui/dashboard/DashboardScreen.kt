@@ -16,13 +16,21 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.SwipeToDismissBox
+import androidx.compose.material3.SwipeToDismissBoxValue
+import androidx.compose.material3.rememberSwipeToDismissBoxState
+import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.filled.ArrowDownward
 import androidx.compose.material.icons.filled.ArrowUpward
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -58,6 +66,8 @@ import kaneplarium.lagerverwaltung.ui.components.NumericKeypad
 import kaneplarium.lagerverwaltung.ui.theme.LagerverwaltungTheme
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.IntrinsicSize
 
 @Composable
 fun DashboardScreen(
@@ -84,7 +94,7 @@ fun DashboardScreen(
         }
     }
 
-    val versionName = "v2026.08.30"
+    val versionName = "v2026.09.19"
 
     DashboardScreenContent(
         articles = articles,
@@ -122,7 +132,22 @@ fun DashboardScreenContent(
     var deleteConfirmCode by remember { mutableStateOf("") }
     var deleteConfirmInput by remember { mutableStateOf("") }
 
+    var timerValue by remember { mutableStateOf(30) }
+
     val focusRequester = remember { FocusRequester() }
+
+    LaunchedEffect(searchQuery) {
+        if (searchQuery.isNotEmpty()) {
+            timerValue = 30
+            while (timerValue > 0) {
+                kotlinx.coroutines.delay(1000)
+                timerValue--
+            }
+            onSearchQueryChange("")
+        } else {
+            timerValue = 30
+        }
+    }
 
     LaunchedEffect(Unit) {
         focusRequester.requestFocus()
@@ -265,8 +290,7 @@ fun DashboardScreenContent(
                             },
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .border(1.dp, Color.Green, MaterialTheme.shapes.small),
-                            colors = ButtonDefaults.textButtonColors(contentColor = Color.Green)
+                                .border(1.dp, MaterialTheme.colorScheme.primary, MaterialTheme.shapes.small)
                         ) {
                             Text(
                                 if (articleForOptions?.isLocked == true) "Entsperren" else "Sperren",
@@ -334,6 +358,7 @@ fun DashboardScreenContent(
                         }
                     }
                 )
+
                 OutlinedTextField(
                     value = searchQuery,
                     onValueChange = { },
@@ -345,7 +370,21 @@ fun DashboardScreenContent(
                     leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
                     singleLine = true,
                     readOnly = true,
-                    shape = MaterialTheme.shapes.medium
+                    shape = MaterialTheme.shapes.medium,
+                    colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = when {
+                            searchQuery.isEmpty() -> MaterialTheme.colorScheme.primary
+                            timerValue > 20 -> Color.Green
+                            timerValue > 10 -> Color.Yellow
+                            else -> Color.Red
+                        },
+                        unfocusedBorderColor = when {
+                            searchQuery.isEmpty() -> MaterialTheme.colorScheme.outline
+                            timerValue > 20 -> Color.Green
+                            timerValue > 10 -> Color.Yellow
+                            else -> Color.Red
+                        }
+                    )
                 )
             }
         },
@@ -363,8 +402,8 @@ fun DashboardScreenContent(
                     if (searchQuery.isNotEmpty()) {
                         val articleExists = articles.any { it.id == searchQuery }
                         if (articleExists) {
-                            onNavigateToEdit(searchQuery)
-                            onSearchQueryChange("")
+                            // Find the article and trigger the options/3-tap logic if needed?
+                            // For now, Enter just confirms search. Navigation is via list 3-tap.
                         } else {
                             showAddArticleDialog = true
                         }
@@ -379,11 +418,12 @@ fun DashboardScreenContent(
     ) { innerPadding ->
         ArticleList(
             articles = articles,
-            onArticleClick = { /* No action */ },
+            onArticleClick = { onNavigateToEdit(it.id) },
             onShowOptions = { article ->
                 articleForOptions = article
                 showConfirmDialog = true
             },
+            onToggleLock = onToggleLockStatus,
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize()
@@ -396,95 +436,134 @@ fun ArticleList(
     articles: List<Article>,
     onArticleClick: (Article) -> Unit,
     onShowOptions: (Article) -> Unit,
+    onToggleLock: (Article) -> Unit,
     modifier: Modifier = Modifier
 ) {
     LazyColumn(
         modifier = modifier,
-        contentPadding = PaddingValues(16.dp)
+        contentPadding = PaddingValues(16.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        items(articles) { article ->
+        items(articles, key = { it.id }) { article ->
             ArticleItem(
                 article = article,
                 onClick = { onArticleClick(article) },
                 onSettingsClick = { onShowOptions(article) },
+                onToggleLock = { onToggleLock(article) },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(vertical = 8.dp)
+                    .animateItem()
             )
         }
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun ArticleItem(
     article: Article,
     onClick: () -> Unit,
     onSettingsClick: () -> Unit,
+    onToggleLock: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var lockTapCount by remember(article.id) { mutableStateOf(0) }
+    var tapCount by remember(article.id) { mutableStateOf(0) }
 
-    Card(
-        modifier = modifier.combinedClickable(
-            onClick = onClick,
-            onLongClick = { /* Disabled long click */ }
-        ),
-        colors = CardDefaults.cardColors(
-            containerColor = if (article.isLocked) MaterialTheme.colorScheme.surfaceVariant else MaterialTheme.colorScheme.surface
-        ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
-    ) {
-        Row(
-            modifier = Modifier.padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = "Kisten-ID: ${article.id}",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = Color(0xFFFFD700),
-                    fontWeight = FontWeight.Bold
-                )
-                Text(
-                    text = "Regal: ${article.shelfNumber}",
-                    style = MaterialTheme.typography.bodyMedium
-                )
-                Text(
-                    text = "Platznummer: ${article.compartmentNumber}",
-                    style = MaterialTheme.typography.bodyMedium
-                )
-                if (article.umschlagFarbe.isNotEmpty() || article.umschlagGroesse.isNotEmpty()) {
-                    Text(
-                        text = "Umschlag: ${article.umschlagFarbe} (${article.umschlagGroesse})",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.secondary
+    val dismissState = rememberSwipeToDismissBoxState(
+        confirmValueChange = { value ->
+            when (value) {
+                SwipeToDismissBoxValue.StartToEnd -> {
+                    onToggleLock()
+                    false // Don't actually dismiss
+                }
+                else -> false
+            }
+        }
+    )
+
+    SwipeToDismissBox(
+        state = dismissState,
+        backgroundContent = {
+            val color = when (dismissState.dismissDirection) {
+                SwipeToDismissBoxValue.StartToEnd -> Color.Green.copy(alpha = 0.5f)
+                else -> Color.Transparent
+            }
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .clip(MaterialTheme.shapes.medium)
+                    .background(color)
+                    .padding(horizontal = 20.dp),
+                contentAlignment = Alignment.CenterStart
+            ) {
+                if (dismissState.dismissDirection == SwipeToDismissBoxValue.StartToEnd) {
+                    Icon(
+                        imageVector = Icons.Default.Lock,
+                        contentDescription = null,
+                        tint = Color.White
                     )
                 }
             }
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                if (article.isLocked) {
-                    IconButton(onClick = {
-                        lockTapCount++
-                        if (lockTapCount >= 3) {
-                            lockTapCount = 0
-                            onSettingsClick()
-                        }
-                    }) {
-                        Icon(
-                            Icons.Default.Lock,
-                            contentDescription = "Locked",
-                            tint = MaterialTheme.colorScheme.primary
-                        )
-                    }
-                } else {
-                    IconButton(onClick = onSettingsClick) {
-                        Icon(
-                            Icons.Default.Settings,
-                            contentDescription = "Optionen",
-                            tint = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
+        },
+        enableDismissFromEndToStart = true, // No action but indicator might show
+        modifier = modifier
+    ) {
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .combinedClickable(
+                    onClick = { /* Card click disabled as requested */ },
+                    onLongClick = onSettingsClick
+                ),
+            colors = CardDefaults.cardColors(
+                containerColor = if (article.isLocked) MaterialTheme.colorScheme.surfaceVariant else MaterialTheme.colorScheme.surface
+            ),
+            elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+        ) {
+            Row(
+                modifier = Modifier.height(IntrinsicSize.Min),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                // Status Indicator: Green if locked, Red if not locked
+                Box(
+                    modifier = Modifier
+                        .width(6.dp)
+                        .fillMaxHeight()
+                        .background(if (article.isLocked) Color.Green else Color.Red)
+                )
+
+                Row(
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    Text(
+                        text = "kID: ${article.id}",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = Color(0xFFFFD700),
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier
+                            .weight(1.2f)
+                            .clickable {
+                                tapCount++
+                                if (tapCount >= 3) {
+                                    tapCount = 0
+                                    onClick()
+                                }
+                            }
+                    )
+                    Text(
+                        text = "R: ${article.shelfNumber}",
+                        style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.weight(1f)
+                    )
+                    Text(
+                        text = "Pn: ${article.compartmentNumber}",
+                        style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.weight(1f)
+                    )
                 }
             }
         }
@@ -535,11 +614,11 @@ fun DashboardScreenContentPreview() {
     LagerverwaltungTheme {
         DashboardScreenContent(
             articles = listOf(
-                Article(id = "123456", shelfNumber = "Regal 1", compartmentNumber = "Platz A", umschlagFarbe = "Blau", umschlagGroesse = "C5"),
+                Article(id = "123456", shelfNumber = "Regal 1", compartmentNumber = "Platz A"),
                 Article(id = "789012", shelfNumber = "Regal 2", compartmentNumber = "Platz B", isLocked = true)
             ),
             searchQuery = "123",
-            versionName = "v2026.08.30",
+            versionName = "v2026.09.19",
             onSearchQueryChange = {},
             onDeleteArticle = {},
             onToggleLockStatus = {},

@@ -8,7 +8,5 @@ data class Article(
     @field:PrimaryKey val id: String,
     val shelfNumber: String,
     val compartmentNumber: String,
-    val umschlagFarbe: String = "",
-    val umschlagGroesse: String = "",
     val isLocked: Boolean = false
 )

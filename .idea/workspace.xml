@@ -21,7 +21,23 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9347c4dc-7ded-4b38-8d0f-01982b65d99e" name="Changes" comment="" />
+    <list default="true" id="9347c4dc-7ded-4b38-8d0f-01982b65d99e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/Lagerverwaltung.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/Lagerverwaltung.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/baselineProfiles/0/app-release.dm" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/baselineProfiles/0/app-release.dm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/baselineProfiles/1/app-release.dm" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/baselineProfiles/1/app-release.dm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/kaneplarium/lagerverwaltung/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/kaneplarium/lagerverwaltung/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/kaneplarium/lagerverwaltung/data/AppDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/kaneplarium/lagerverwaltung/data/AppDatabase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/kaneplarium/lagerverwaltung/data/Article.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/kaneplarium/lagerverwaltung/data/Article.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/kaneplarium/lagerverwaltung/ui/articleedit/ArticleEditScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/kaneplarium/lagerverwaltung/ui/articleedit/ArticleEditScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/kaneplarium/lagerverwaltung/ui/articleedit/ArticleEditViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/kaneplarium/lagerverwaltung/ui/articleedit/ArticleEditViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/kaneplarium/lagerverwaltung/ui/dashboard/DashboardScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/kaneplarium/lagerverwaltung/ui/dashboard/DashboardScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/kaneplarium/lagerverwaltung/ui/dashboard/DashboardViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/kaneplarium/lagerverwaltung/ui/dashboard/DashboardViewModel.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,6 +75,9 @@
     <option name="REMEMBER_PASSWORDS" value="true" />
     <option name="BUILD_TARGET_KEY" value="apk" />
   </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="master" />
+  </component>
   <component name="Git.Settings">
     <option name="PREVIEW_PUSH_PROTECTED_ONLY" value="true" />
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -71,12 +90,19 @@
     </option>
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="SIGN_OFF_COMMIT" value="true" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
+    {
+      &quot;state&quot;: &quot;OPEN&quot;,
+      &quot;assignee&quot;: &quot;Kaneplarium&quot;,
+      &quot;author&quot;: &quot;Kaneplarium&quot;
+    }
+  ],
   &quot;lastFilter&quot;: {
     &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;Kaneplarium&quot;
+    &quot;assignee&quot;: &quot;Kaneplarium&quot;,
+    &quot;author&quot;: &quot;Kaneplarium&quot;
   }
 }</component>
   <component name="GithubDefaultAccount">
@@ -93,6 +119,9 @@
   &quot;fromUser&quot;: false
 }</component>
   <component name="ProjectId" id="3IGl6pboZgN87Fk4A4HRWojSxPJ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -113,7 +142,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "com.google.cloudcode.ide_session_index": "20260831_0001",
+    "com.google.cloudcode.ide_session_index": "20260919_0001",
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
@@ -310,7 +339,71 @@
       <option name="project" value="LOCAL" />
       <updated>1788130586839</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Änderungen:&#10;1.&#10;Neues Datenmodell: Die Artikel verfügen nun über die Felder umschlagFarbe und umschlagGroesse.&#10;2.&#10;Bearbeitungsmaske: Im Bearbeitungsbildschirm wurden zwei neue Eingabefelder hinzugefügt. Die Eingabe erfolgt (konsistent zum Rest der App) über das numerische Tastenfeld.&#10;3.&#10;Dashboard: In der Liste werden die Umschlagdaten (Farbe und Größe) nun unter der Platznummer angezeigt.&#10;4.&#10;Export/Import: Die CSV-Funktion wurde erweitert, sodass die neuen Felder mit exportiert und importiert werden.&#10;5.&#10;Version: Die Versionsnummer wurde auf v2026.08.30 aktualisiert.&#10;6.&#10;Datenbank: Die Datenbankversion wurde erhöht. Da es sich um eine strukturelle Änderung handelt, habe ich die automatische Löschung bei Migration aktiviert (Destructive Migration), um Probleme beim ersten Start nach dem Update zu vermeiden.&#10;&#10;Signed-off-by: Marcel Maurice Marco Wittke &lt;kaneplarium@macbook.local&gt;">
+      <option name="closed" value="true" />
+      <created>1788130687845</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1788130687845</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Änderungen:&#10;1.&#10;Neues Datenmodell: Die Artikel verfügen nun über die Felder umschlagFarbe und umschlagGroesse.&#10;2.&#10;Bearbeitungsmaske: Im Bearbeitungsbildschirm wurden zwei neue Eingabefelder hinzugefügt. Die Eingabe erfolgt (konsistent zum Rest der App) über das numerische Tastenfeld.&#10;3.&#10;Dashboard: In der Liste werden die Umschlagdaten (Farbe und Größe) nun unter der Platznummer angezeigt.&#10;4.&#10;Export/Import: Die CSV-Funktion wurde erweitert, sodass die neuen Felder mit exportiert und importiert werden.&#10;5.&#10;Version: Die Versionsnummer wurde auf v2026.08.30 aktualisiert.&#10;6.&#10;Datenbank: Die Datenbankversion wurde erhöht. Da es sich um eine strukturelle Änderung handelt, habe ich die automatische Löschung bei Migration aktiviert (Destructive Migration), um Probleme beim ersten Start nach dem Update zu vermeiden.&#10;&#10;Signed-off-by: Marcel Maurice Marco Wittke &lt;kaneplarium@macbook.local&gt;">
+      <option name="closed" value="true" />
+      <created>1788130708319</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1788130708319</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Änderungen:&#10;1.&#10;Neues Datenmodell: Die Artikel verfügen nun über die Felder umschlagFarbe und umschlagGroesse.&#10;2.&#10;Bearbeitungsmaske: Im Bearbeitungsbildschirm wurden zwei neue Eingabefelder hinzugefügt. Die Eingabe erfolgt (konsistent zum Rest der App) über das numerische Tastenfeld.&#10;3.&#10;Dashboard: In der Liste werden die Umschlagdaten (Farbe und Größe) nun unter der Platznummer angezeigt.&#10;4.&#10;Export/Import: Die CSV-Funktion wurde erweitert, sodass die neuen Felder mit exportiert und importiert werden.&#10;5.&#10;Version: Die Versionsnummer wurde auf v2026.08.30 aktualisiert.&#10;6.&#10;Datenbank: Die Datenbankversion wurde erhöht. Da es sich um eine strukturelle Änderung handelt, habe ich die automatische Löschung bei Migration aktiviert (Destructive Migration), um Probleme beim ersten Start nach dem Update zu vermeiden.&#10;&#10;Signed-off-by: Marcel Maurice Marco Wittke &lt;kaneplarium@macbook.local&gt;">
+      <option name="closed" value="true" />
+      <created>1788130876253</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1788130876253</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Änderungen:&#10;1.&#10;Neues Datenmodell: Die Artikel verfügen nun über die Felder umschlagFarbe und umschlagGroesse.&#10;2.&#10;Bearbeitungsmaske: Im Bearbeitungsbildschirm wurden zwei neue Eingabefelder hinzugefügt. Die Eingabe erfolgt (konsistent zum Rest der App) über das numerische Tastenfeld.&#10;3.&#10;Dashboard: In der Liste werden die Umschlagdaten (Farbe und Größe) nun unter der Platznummer angezeigt.&#10;4.&#10;Export/Import: Die CSV-Funktion wurde erweitert, sodass die neuen Felder mit exportiert und importiert werden.&#10;5.&#10;Version: Die Versionsnummer wurde auf v2026.08.30 aktualisiert.&#10;6.&#10;Datenbank: Die Datenbankversion wurde erhöht. Da es sich um eine strukturelle Änderung handelt, habe ich die automatische Löschung bei Migration aktiviert (Destructive Migration), um Probleme beim ersten Start nach dem Update zu vermeiden.&#10;&#10;Signed-off-by: Marcel Maurice Marco Wittke &lt;kaneplarium@macbook.local&gt;">
+      <option name="closed" value="true" />
+      <created>1788130883820</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1788130883820</updated>
+    </task>
+    <task id="LOCAL-00015" summary="2026-08-30">
+      <option name="closed" value="true" />
+      <created>1788130902955</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1788130902955</updated>
+    </task>
+    <task id="LOCAL-00016" summary="2026-08-30&#10;&#10;Signed-off-by: Marcel Maurice Marco Wittke &lt;kaneplarium@macbook.local&gt;">
+      <option name="closed" value="true" />
+      <created>1788130908580</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1788130908580</updated>
+    </task>
+    <task id="LOCAL-00017" summary="2026-08-30">
+      <option name="closed" value="true" />
+      <created>1788130939895</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1788130939895</updated>
+    </task>
+    <task id="LOCAL-00018" summary="2026-08-30">
+      <option name="closed" value="true" />
+      <created>1788384290558</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1788384290558</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="UpdateCopyrightCheckinHandler">
@@ -333,9 +426,11 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="MARK_IGNORED_AS_EXCLUDED" value="true" />
     <MESSAGE value="Änderungen:&#10;1.&#10;Neues Datenmodell: Die Artikel verfügen nun über die Felder umschlagFarbe und umschlagGroesse.&#10;2.&#10;Bearbeitungsmaske: Im Bearbeitungsbildschirm wurden zwei neue Eingabefelder hinzugefügt. Die Eingabe erfolgt (konsistent zum Rest der App) über das numerische Tastenfeld.&#10;3.&#10;Dashboard: In der Liste werden die Umschlagdaten (Farbe und Größe) nun unter der Platznummer angezeigt.&#10;4.&#10;Export/Import: Die CSV-Funktion wurde erweitert, sodass die neuen Felder mit exportiert und importiert werden.&#10;5.&#10;Version: Die Versionsnummer wurde auf v2026.08.30 aktualisiert.&#10;6.&#10;Datenbank: Die Datenbankversion wurde erhöht. Da es sich um eine strukturelle Änderung handelt, habe ich die automatische Löschung bei Migration aktiviert (Destructive Migration), um Probleme beim ersten Start nach dem Update zu vermeiden." />
-    <MESSAGE value="2026-08-30" />
     <MESSAGE value="Änderungen:&#10;1.&#10;Neues Datenmodell: Die Artikel verfügen nun über die Felder umschlagFarbe und umschlagGroesse.&#10;2.&#10;Bearbeitungsmaske: Im Bearbeitungsbildschirm wurden zwei neue Eingabefelder hinzugefügt. Die Eingabe erfolgt (konsistent zum Rest der App) über das numerische Tastenfeld.&#10;3.&#10;Dashboard: In der Liste werden die Umschlagdaten (Farbe und Größe) nun unter der Platznummer angezeigt.&#10;4.&#10;Export/Import: Die CSV-Funktion wurde erweitert, sodass die neuen Felder mit exportiert und importiert werden.&#10;5.&#10;Version: Die Versionsnummer wurde auf v2026.08.30 aktualisiert.&#10;6.&#10;Datenbank: Die Datenbankversion wurde erhöht. Da es sich um eine strukturelle Änderung handelt, habe ich die automatische Löschung bei Migration aktiviert (Destructive Migration), um Probleme beim ersten Start nach dem Update zu vermeiden.&#10;&#10;Signed-off-by: Marcel Maurice Marco Wittke &lt;kaneplarium@macbook.local&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Änderungen:&#10;1.&#10;Neues Datenmodell: Die Artikel verfügen nun über die Felder umschlagFarbe und umschlagGroesse.&#10;2.&#10;Bearbeitungsmaske: Im Bearbeitungsbildschirm wurden zwei neue Eingabefelder hinzugefügt. Die Eingabe erfolgt (konsistent zum Rest der App) über das numerische Tastenfeld.&#10;3.&#10;Dashboard: In der Liste werden die Umschlagdaten (Farbe und Größe) nun unter der Platznummer angezeigt.&#10;4.&#10;Export/Import: Die CSV-Funktion wurde erweitert, sodass die neuen Felder mit exportiert und importiert werden.&#10;5.&#10;Version: Die Versionsnummer wurde auf v2026.08.30 aktualisiert.&#10;6.&#10;Datenbank: Die Datenbankversion wurde erhöht. Da es sich um eine strukturelle Änderung handelt, habe ich die automatische Löschung bei Migration aktiviert (Destructive Migration), um Probleme beim ersten Start nach dem Update zu vermeiden.&#10;&#10;Signed-off-by: Marcel Maurice Marco Wittke &lt;kaneplarium@macbook.local&gt;" />
+    <MESSAGE value="2026-08-30&#10;&#10;Signed-off-by: Marcel Maurice Marco Wittke &lt;kaneplarium@macbook.local&gt;" />
+    <MESSAGE value="2026-09-02" />
+    <MESSAGE value="2026-08-30" />
+    <option name="LAST_COMMIT_MESSAGE" value="2026-08-30" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
