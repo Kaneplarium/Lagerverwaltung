@@ -1,37 +1,34 @@
-# Walkthrough - App Enhancements (UX/UI)
+# Walkthrough - App Enhancements (UX/UI Refined)
 
-I have implemented a set of significant UX and UI improvements to make the Lagerverwaltung app more efficient, responsive, and visually modern.
+I have implemented and further refined a set of UX and UI improvements to make the Lagerverwaltung app more efficient and secure.
 
 ## Changes Made
 
 ### UX Improvements
-- **Haptic Feedback**: The numeric keypad now provides tactile feedback (vibration) on every button press, improving the typing experience on physical devices.
-- **Swipe-to-Action**: You can now perform quick actions by swiping article cards in the list:
-    - **Swipe Right (Start to End)**: Toggles the lock status instantly.
-    - **Swipe Left (End to Start)**: Navigates directly to the Edit screen.
-- **Recent Searches**: A new "History" bar above the search field shows the last 5 successful searches. Tapping a chip instantly re-opens that article.
+- **3rd-Tap-to-Update**: Navigating to the edit (now update) screen for an existing article is only possible by tapping the `kID` text exactly **3 times**. This prevents accidental edits.
+- **Haptic Feedback**: The numeric keypad now provides tactile feedback (vibration) on every button press.
+- **Swipe-to-Lock**: Quickly toggle the lock status by swiping article cards to the right. Swiping to the left is disabled to maintain the 3-tap security for editing.
 
 ### UI Enhancements
-- **Status Indicators**: Each article card now features a vertical color bar on the left:
-    - **Red**: Article is currently NOT locked.
-    - **Green**: Article IS locked.
-- **Improved Layout**: Article details (ID, Regal, Platznummer) are now displayed in a single, space-efficient row with short labels (`kID`, `R`, `Pn`).
-- **Clean UI**: Removed the redundant lock icon from the card content to reduce visual clutter.
-- **List Animations**: Smooth animations are now triggered when filtering, adding, or removing items from the list.
-- **Interactive Search Bar**: The search bar now includes the auto-clear timer value dezent on the right and changes color (Green -> Yellow -> Red) as the timer counts down.
+- **Options Menu Cleanup**: Removed the "Bearbeiten" button from the long-click options menu. Only "Sperren / Entsperren" and "Löschen" remain.
+- **Consistent Colors**: The "Sperren" button in the options menu now uses the same primary color as the previous edit button for a cleaner look.
+- **Status Indicators**: Each article card features a vertical color bar:
+    *   **Red**: Article is NOT locked.
+    *   **Green**: Article IS locked.
+- **Refined Layout**: Article details are displayed in a single row using compact labels (`kID`, `R`, `Pn`).
+- **Edit Screen Title**: Renamed the title to "Artikel aktualisieren" when opening an existing article.
 
-### Version Update
-- The app version has been updated to `v2026.09.19`.
+### Feature Removal
+- **History Bar**: Removed the "Recent Searches" bar as requested.
+- **Timer Display**: The countdown seconds are no longer visible in the search bar (the background auto-clear logic still runs).
 
 ## Verification Results
 
 ### Automated Tests
-- Build successfully completed with `gradle assembleDebug`.
+- Build successfully completed.
 - UI rendering verified via Compose Preview.
 
 ### Manual Verification
-- Verified that swiping works as intended (Lock/Unlock and Edit).
-- Recent searches correctly populate after navigating to an article.
-- Haptic feedback code is integrated and correctly uses `LocalHapticFeedback`.
-
-![Enhanced Dashboard](file:///Users/kaneplarium/Library/Caches/Google/AndroidStudio2026.1.3/projects/lagerverwaltung.6732c90a/.artifacts/98b5aed3-da04-4208-8dba-5adb0c545744/preview.png)
+- Verified that 3-tap logic works correctly.
+- Verified "Bearbeiten" is gone from the menu.
+- Verified colors in the options dialog.

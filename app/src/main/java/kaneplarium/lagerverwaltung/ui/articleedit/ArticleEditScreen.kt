@@ -96,7 +96,7 @@ fun ArticleEditScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(if (uiState.isEditing) "Artikel bearbeiten" else "Neuer Artikel") },
+                title = { Text(if (uiState.isEditing) "Artikel aktualisieren" else "Neuer Artikel") },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Zurück")

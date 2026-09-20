@@ -1,37 +1,33 @@
-# Implementation Plan - UI Cleanup and Interaction Restrictions
+# Implementation Plan - Switch to 3rd-Swipe Navigation
 
-This plan covers removing the history, timer display, and restricting the editing action to a 3-tap gesture on the Kisten-ID.
+This plan covers changing the edit-screen navigation trigger from a triple-tap to a triple-swipe-left gesture, while cleaning up residual code from previous features (History, Timer UI).
 
 ## User Review Required
 
 > [!IMPORTANT]
-> - **3-Tap to Edit**: Navigating to the edit screen now requires tapping the `kID` text exactly 3 times. Regular clicks on the card will no longer trigger editing.
-> - **History Removed**: The "Recent Searches" bar has been removed.
-> - **Timer Hidden**: The countdown timer ("30s") in the search bar is no longer visible, though the auto-clear logic remains active.
+> - **3-Swipe to Edit**: To navigate to the article update screen, you must now swipe an article card from **right to left** exactly **3 times**. A small counter ("1/3", "2/3") will appear in the background during the swipe.
+> - **History and Timer Clean-up**: All remaining logic and UI components for the search history and visual countdown timer will be removed.
 
 ## Proposed Changes
 
-### ViewModel
-#### [MODIFY] [DashboardViewModel.kt](file:///Users/kaneplarium/AndroidStudioProjects/Lagerverwaltung/app/src/main/java/kaneplarium/lagerverwaltung/ui/dashboard/DashboardViewModel.kt)
-- Remove `recentSearches` and `addRecentSearch` logic.
-
 ### UI Components
 #### [MODIFY] [DashboardScreen.kt](file:///Users/kaneplarium/AndroidStudioProjects/Lagerverwaltung/app/src/main/java/kaneplarium/lagerverwaltung/ui/dashboard/DashboardScreen.kt)
-- **DashboardScreen**: Remove `recentSearches` state collection.
+- **DashboardScreen**: Remove `recentSearches` state collection and pass.
 - **DashboardScreenContent**:
     - Remove `recentSearches` parameter.
-    - Remove History `LazyRow`.
-    - Remove `trailingIcon` from search `OutlinedTextField` that displayed the timer.
-    - Change "Sperren" button color in the options dialog to match "Bearbeiten" (default).
+    - Remove History UI and Timer display logic.
+    - Clean up unused imports (`LazyRow`, `History`, `SuggestionChip`).
 - **ArticleItem**:
-    - Add internal `tapCount` state.
-    - Implement a `Modifier.clickable` on the `kID` Text that increments `tapCount` and triggers `onClick` (navigation) only on the 3rd tap.
-    - Disable swipe-to-edit to maintain the 3-tap restriction.
+    - Replace `tapCount` with `swipeLeftCount`.
+    - Update `SwipeToDismissBox` for `EndToStart` direction to increment `swipeLeftCount`.
+    - Trigger navigation only when `swipeLeftCount == 3`.
+    - Add a visual counter (`1/3`, `2/3`) in the swipe-to-edit background.
+    - Remove `clickable` logic from `kID` text.
 
 ## Verification Plan
 
 ### Manual Verification
-- Verify the "History" bar is gone.
-- Verify the search bar no longer shows the seconds timer.
-- Open an article card's options: verify "Sperren" is the same color as "Bearbeiten".
-- Try to edit an article: confirm it only works after tapping `kID` 3 times.
+- Swipe an article card to the left 3 times and verify it opens the edit screen.
+- Verify the counter appears in the background during the swipe.
+- Confirm the "History" bar and timer text are completely gone.
+- Check that "Sperren" in the options menu still has the same color as "Bearbeiten" (if still present) or matches the primary theme.

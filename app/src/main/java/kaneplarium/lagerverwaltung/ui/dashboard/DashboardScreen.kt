@@ -28,6 +28,7 @@ import androidx.compose.material.icons.filled.ArrowDownward
 import androidx.compose.material.icons.filled.ArrowUpward
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.foundation.layout.size
@@ -267,20 +268,6 @@ fun DashboardScreenContent(
                     ) {
                         TextButton(
                             onClick = {
-                                val articleId = articleForOptions?.id
-                                showOptionsDialog = false
-                                articleForOptions = null
-                                onNavigateToEdit(articleId)
-                            },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .border(1.dp, MaterialTheme.colorScheme.primary, MaterialTheme.shapes.small)
-                        ) {
-                            Text("Bearbeiten", fontWeight = FontWeight.Bold)
-                        }
-
-                        TextButton(
-                            onClick = {
                                 val article = articleForOptions
                                 showOptionsDialog = false
                                 if (article != null) {
@@ -402,8 +389,7 @@ fun DashboardScreenContent(
                     if (searchQuery.isNotEmpty()) {
                         val articleExists = articles.any { it.id == searchQuery }
                         if (articleExists) {
-                            // Find the article and trigger the options/3-tap logic if needed?
-                            // For now, Enter just confirms search. Navigation is via list 3-tap.
+                            // Navigation now handled by swipe or long-press options if restored
                         } else {
                             showAddArticleDialog = true
                         }
@@ -467,13 +453,21 @@ fun ArticleItem(
     onToggleLock: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var tapCount by remember(article.id) { mutableStateOf(0) }
+    var swipeLeftCount by remember(article.id) { mutableStateOf(0) }
 
     val dismissState = rememberSwipeToDismissBoxState(
         confirmValueChange = { value ->
             when (value) {
                 SwipeToDismissBoxValue.StartToEnd -> {
                     onToggleLock()
+                    false // Don't actually dismiss
+                }
+                SwipeToDismissBoxValue.EndToStart -> {
+                    swipeLeftCount++
+                    if (swipeLeftCount >= 3) {
+                        swipeLeftCount = 0
+                        onClick()
+                    }
                     false // Don't actually dismiss
                 }
                 else -> false
@@ -486,6 +480,7 @@ fun ArticleItem(
         backgroundContent = {
             val color = when (dismissState.dismissDirection) {
                 SwipeToDismissBoxValue.StartToEnd -> Color.Green.copy(alpha = 0.5f)
+                SwipeToDismissBoxValue.EndToStart -> MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
                 else -> Color.Transparent
             }
             Box(
@@ -494,7 +489,8 @@ fun ArticleItem(
                     .clip(MaterialTheme.shapes.medium)
                     .background(color)
                     .padding(horizontal = 20.dp),
-                contentAlignment = Alignment.CenterStart
+                contentAlignment = if (dismissState.dismissDirection == SwipeToDismissBoxValue.StartToEnd) 
+                    Alignment.CenterStart else Alignment.CenterEnd
             ) {
                 if (dismissState.dismissDirection == SwipeToDismissBoxValue.StartToEnd) {
                     Icon(
@@ -502,17 +498,30 @@ fun ArticleItem(
                         contentDescription = null,
                         tint = Color.White
                     )
+                } else if (dismissState.dismissDirection == SwipeToDismissBoxValue.EndToStart) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(
+                            text = "$swipeLeftCount/3",
+                            color = Color.White,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.padding(end = 8.dp)
+                        )
+                        Icon(
+                            imageVector = Icons.Default.Edit,
+                            contentDescription = null,
+                            tint = Color.White
+                        )
+                    }
                 }
             }
         },
-        enableDismissFromEndToStart = false,
         modifier = modifier
     ) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
                 .combinedClickable(
-                    onClick = { /* Card click disabled as requested */ },
+                    onClick = { /* Card click disabled */ },
                     onLongClick = onSettingsClick
                 ),
             colors = CardDefaults.cardColors(
@@ -544,15 +553,7 @@ fun ArticleItem(
                         style = MaterialTheme.typography.bodyMedium,
                         color = Color(0xFFFFD700),
                         fontWeight = FontWeight.Bold,
-                        modifier = Modifier
-                            .weight(1.2f)
-                            .clickable {
-                                tapCount++
-                                if (tapCount >= 3) {
-                                    tapCount = 0
-                                    onClick()
-                                }
-                            }
+                        modifier = Modifier.weight(1.2f)
                     )
                     Text(
                         text = "R: ${article.shelfNumber}",

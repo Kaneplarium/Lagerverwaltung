@@ -1,8 +1,12 @@
 - [x] Add Haptic Feedback to `NumericKeypad`
-- [x] Add Recent Searches logic to `DashboardViewModel`
-- [x] Implement Swipe-to-Action in `ArticleItem`
+- [x] Add Recent Searches logic to `DashboardViewModel` (Removed)
+- [x] Implement Swipe-to-Action in `ArticleItem` (3-Swipe Left to Edit)
 - [x] Add visual status indicator to `ArticleItem`
-- [x] Add Recent Searches UI to `DashboardScreen`
+- [x] Add Recent Searches UI to `DashboardScreen` (Removed)
 - [x] Add list animations in `DashboardScreen`
-- [x] Update version to `v2026.09.19.UX`
+- [x] Update version to `v2026.09.19`
+- [x] Remove "Bearbeiten" button from options menu
+- [x] Rename "Artikel bearbeiten" to "Artikel aktualisieren" in edit screen
+- [x] Remove History bar and Timer text display
+- [x] Match "Sperren" button color to theme primary
 - [x] Verify build and functionality
